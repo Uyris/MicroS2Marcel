@@ -10,6 +10,12 @@ from sqlmodel import Session, SQLModel
 ModeloT = TypeVar("ModeloT", bound=SQLModel)
 
 
+class Erro(SQLModel):
+    """Formato das respostas de erro da API (usado na documentação)."""
+
+    detail: str
+
+
 def buscar_ou_404(
     session: Session, modelo: type[ModeloT], chave: int, mensagem: str, *, travar: bool = False
 ) -> ModeloT:
@@ -32,8 +38,10 @@ class Paginacao:
 
 
 def paginacao(
-    offset: Annotated[int, Query(ge=0)] = 0,
-    limit: Annotated[int, Query(ge=1, le=100)] = 20,
+    offset: Annotated[int, Query(ge=0, description="Quantidade de registros a pular")] = 0,
+    limit: Annotated[
+        int, Query(ge=1, le=100, description="Quantidade máxima de registros retornados")
+    ] = 20,
 ) -> Paginacao:
     return Paginacao(offset=offset, limit=limit)
 
