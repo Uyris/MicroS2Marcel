@@ -1,0 +1,7 @@
+# Credenciais locais (use .env.example como modelo)
+.env
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
