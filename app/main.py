@@ -1,7 +1,12 @@
 from fastapi import FastAPI
 from fastapi.responses import RedirectResponse
 
+from app.routers import carteiras, usuarios
+
 app = FastAPI(title="GameHub API")
+
+app.include_router(usuarios.router)
+app.include_router(carteiras.router)
 
 
 @app.get("/", include_in_schema=False)
