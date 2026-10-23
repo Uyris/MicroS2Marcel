@@ -1,0 +1,62 @@
+erDiagram
+    usuario ||--|| carteira : possui
+    usuario ||--o{ jogo : vende
+    carteira ||--o{ carteira_jogo : guarda
+    jogo ||--o{ carteira_jogo : ""
+    usuario ||--o{ grupo : "é dono"
+    grupo ||--|{ grupo_membro : tem
+    usuario ||--o{ grupo_membro : participa
+    usuario ||--o{ compra : "compra / vende"
+    jogo ||--o{ compra : ""
+
+    usuario {
+        int id PK
+        text nome
+        text email
+        date data_nascimento
+        bool ativo
+        timestamp criado_em
+    }
+    carteira {
+        int id PK
+        int usuario_id FK
+        decimal saldo
+        timestamp atualizada_em
+    }
+    jogo {
+        int id PK
+        text titulo
+        text descricao
+        enum genero
+        decimal preco
+        date data_lancamento
+        int classificacao_etaria
+        int vendedor_id FK
+        bool disponivel
+        timestamp criado_em
+    }
+    carteira_jogo {
+        int carteira_id PK, FK
+        int jogo_id PK, FK
+        timestamp adquirido_em
+    }
+    grupo {
+        int id PK
+        text nome
+        text descricao
+        int dono_id FK
+        timestamp criado_em
+    }
+    grupo_membro {
+        int grupo_id PK, FK
+        int usuario_id PK, FK
+        timestamp entrou_em
+    }
+    compra {
+        int id PK
+        int comprador_id FK
+        int vendedor_id FK
+        int jogo_id FK
+        decimal valor_pago
+        timestamp realizada_em
+    }
