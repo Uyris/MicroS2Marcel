@@ -94,4 +94,4 @@ Agente de IA: Claude Opus 5.5
 - Documentação de commits e particionamento de trabalho.
 - Criação da imagem do modelo relacional usando mermaid.
 - Criação da seed para popular o banco e postman da API REST.
-- Criação do README
+- Criação do README e Melhorias visuais
