@@ -87,3 +87,11 @@ uvicorn app.main:app --reload
 ```
 
 A documentação interativa fica em **http://localhost:8000/docs** (Swagger)
+
+## Uso de IA
+Agente de IA: Claude Opus 5.5
+
+- Documentação de commits e particionamento de trabalho.
+- Criação da imagem do modelo relacional usando mermaid.
+- Criação da seed para popular o banco e postman da API REST.
+- Criação do README
